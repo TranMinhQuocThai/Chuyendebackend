@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Trang Chủ</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <!--Bootstrap CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .signup-container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .form-section {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 30px;
+        }
+
+        .form-section h2 {
+            font-size: 24px;
+            color: #f44336;
+            margin-bottom: 20px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .social-login a {
+            text-decoration: none;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #666;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-login a:hover {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-section input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-section input:focus {
+            border-color: #f44336;
+            outline: none;
+        }
+
+        .form-section .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+        }
+
+        .form-section .checkbox input {
+            width: auto;
+        }
+
+        .form-section .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-section button {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-section .signup-btn {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .form-section .signin-btn {
+            background-color: #fff;
+            color: #f44336;
+            border: 1px solid #f44336;
+        }
+
+        .form-section .signup-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .form-section .signin-btn:hover {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .image-section {
+            flex: 1;
+            background:url(assets/img/lienhe1.png); background-size: 100% 100%;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="form-section">
+            <h2>Nhập Tài Khoản </h2>
+            <div class="social-login">
+                <a href="#"><i class="bi bi-google"></i> G</a>
+                <a href="#"><i class="bi bi-facebook"></i> F</a>
+                <a href="#"><i class="bi bi-linkedin"></i> L</a>
+            </div>
+
+            <form id="loginForm">
+                <input type="text" id="name" placeholder="Nhập tên của bạn" required>
+                <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+                <div class="checkbox">
+                    <input type="checkbox" required>
+                    <label>Tôi đồng ý với <a href="#">Điều khoản </a> và  <a href="#">Chính sách quyền riêng tư</a>.</label>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="signup-btn">Đăng nhập</button>
+                </div>
+            </form>
+            <div id="responseMessage" class="mt-3"></div>
+        </div>
+        <div class="image-section"></div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const responseMessage = document.getElementById('responseMessage');
+        let ktra= false;
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, password }),
+                });
+                const data = await response.json();
+                console.log(data);
+                if (response.ok) {
+                    responseMessage.innerHTML = `<div class="alert alert-success"> hello ${data.message}</div>`;
+                    localStorage.setItem('token', data.token);
+                    ktra=true; // Save token
+                } else {
+                    responseMessage.innerHTML = `<div class="alert alert-danger">no ok ${data.message}</div>`;
+                }
+            } catch (error) {
+                responseMessage.innerHTML = `<div class="alert alert-danger">Lỗi kết nối đến server!</div>`;
+            }
+            if(ktra==true){
+                window.location.href="/"; // Redirect to homepage
+            }
+        }
+    
+    );
+    </script>
+</body>
+</html>
