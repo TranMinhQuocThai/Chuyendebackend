@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // Kết nối MongoDB
-mongoose.connect('mongodb://localhost:27017/fruits', {
+mongoose.connect(process.env.Mongodb_url, {
   serverSelectionTimeoutMS: 30000,
 })
   .then(() => console.log('Kết nối với MongoDB thành công'))
