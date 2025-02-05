@@ -18,6 +18,8 @@ app.use(express.static('public'));
 
 // Kết nối MongoDB
 mongoose.connect(process.env.Mongodb_url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000,
 })
   .then(() => console.log('Kết nối với MongoDB thành công'))
