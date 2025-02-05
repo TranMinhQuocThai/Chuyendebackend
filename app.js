@@ -234,5 +234,5 @@ app.post('/register', async (req, res) => {
 // Server
 const PORT = 1000;
 app.listen(PORT, () => {
-  console.log(`Server đang chạy tại http://localhost:${PORT}`);
+  console.log(`Server đang chạy tại http://localhost:${PORT}/dangki`);
 });
