@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>Trang Chủ</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <!--Bootstrap CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -33,7 +33,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
         rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
@@ -46,26 +46,41 @@
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="/"><img src="/img/6.png" alt="logo" style="height: 70px;">Fruits</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
+        <div class="container px-4 px-lg-5"> <a class="navbar-brand" href="/"><img src="assets/img/6.png" alt="logo">
+                Fruits</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"> Menu <i class="fas fa-bars"></i> </button>
+
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Trang Chủ</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">Giới Thiệu</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/post">Sản Phẩm</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">Liên hệ</a></li>
+                    <li class="nav-item form-inline"> <input class="form-control form-control-sm" type="search"
+                            placeholder="Search" aria-label="Search"> <button class="btn btn-outline-success btn-sm"
+                            type="submit">Search</button> </li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/"><i
+                                class="bi bi-house-fill"></i> Trang Chủ</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about"><i
+                                class="bi bi-list"></i> Giới Thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/post"><i
+                                class="bi bi-basket-fill"></i> Sản Phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact"><i
+                                class="bi bi-telephone-fill"></i> Liên hệ</a></li>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+                                class="bi bi-person-fill"></i> Tài khoản </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/dangki">Đăng ký</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/dangnhap">Đăng nhập </a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-
     </nav>
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('/img/baner_trangchu.jpg')">
+    <header class="masthead" style="background-image: url('/assets/img/1.png')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -86,7 +101,7 @@
                     <a href="views/about.ejs">
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="/img/gioithieucuahang.jpg" alt="Bitcoin Image" style="width: 100%;">
+                                <img src="assets/img/2.png" alt="Bitcoin Image" style="width: 100%;">
                             </div>
                             <div class="col-lg-6">
                                 <h3 class="" style="font-family: ChuckFive; font-size: 50px; color: rgb(255, 70, 19);">
@@ -124,128 +139,193 @@
                     TRONG CỬA HÀNG</span></b></h3>
     </div>
     <div class="container my-5">
-        <div class="row">
-          <% fruits.forEach(fruit => { %>
+        <div class="row"> <!-- Card 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card card-custom position-relative"> <img src="/img/<%= fruit.image%>.jpg" style="width: 100%; height: 300px" class="card-img-top"
-                      alt="Mỳ Xào Cay">
-                  <div class="card-body card-body-custom text-center">
-                      <h5 class="card-title"><%= fruit.name %></h5>
-                      <p class="card-text text-danger">Giá:<%= fruit.price %>.000vnđ/kg</p>
-                      <p class="card-text">Số lượng:<%= fruit.quantity %></p>
-                  </div>
-                 <div class="row p-3">
-                  <div class="d-flex justify-content-center col"> <button class="btn btn-primary">Mua Hàng</button> </div>
-                  <div class="d-flex justify-content-center col"> <button class="btn btn-danger">Thêm vào giỏ hàng</button> </div>
-                 </div>
-              </div>
-          </div>
-          <% }) %>
-            
-           
-    </div> <!-- Divider-->
-    <hr class="my-4" /> <!-- Post preview-->
-    <div class="post-preview"> <a href="post.html">
-            <div class="container fluid">
-                <h3><b>OUR <span style="color: #a02800;">FOOD</span></b></h3>
-                <p style="color: gray;">Nhà hàng chúng tôi luôn đón chào quý khách!</p>
-            </div>
-        </a> </div>
-    <!-- Divider-->
-    <hr class="my-4" />
-    <!-- Post preview-->
-    <div class="post-preview">
-        <!--carousel  -->
-        <div class="owl-carousel owl-theme animate__delay-3s animate__animated animate__fadeInUp">
-            <!-- Bấm hình lên liên kết với Lab khác -->
-            <% fruits.forEach(fruit => { %>
-              <div> <img src="/img/<%= fruit.image %>.jpg" style="width: 100%; height: 250px;" alt=""></div>
-            <% }) %>
-        </div>
-    </div>
-    <!--  -->
-    <hr class="my-4" />
-    <footer class="bg-black text-white py-5">
-        <div class="container-lg">
-            <div class="row">
-                <!-- Bên trái -->
-                <div class="col-lg-4 mb-4 mb-lg-0 text-center">
-                    <div class="border border-warning rounded p-3">
-                        <img src="assets/img/3.jpg" alt="" class="img-fluid rounded mb-3">
-                        <h3>RƯỢU HẢO HẠN</h3>
-                        <p style="color: gray;">American</p>
-                        <p style="color: gray;">Rượu làm vơi đi nỗi buồn và suy tư. Tạo cho bạn một cảm giác bình
-                            yên, giảm căn thẳng.</p>
-                        <div class="social-icons d-flex justify-content-center">
-                            <img src="hinhanh_labs/images/lin.png" alt="Facebook" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/tw.png" alt="Twitter" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/insta.png" alt="LinkedIn" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/fb.png" alt="Instagram" class="social-icon mx-2">
-                        </div>
+                <div class="card card-custom position-relative"> <img src="assets/img/1.jpg" class="card-img-top"
+                        alt="Mỳ Xào Cay">
+                    <div class="card-body card-body-custom text-center">
+                        <h5 class="card-title">Dứa Thái Lan</h5>
+                        <p class="card-text">
+                            Dứa là loại trái cây phổ biến ở vùng nhiệt đới vị chua ngọt hòa lẫn nhau, là loại thực phẩm
+                            giàu vitamin và khoáng chất được ưa chuộng không chỉ trong các món ăn hàng ngày, mà còn dùng
+                            làm các loại nước giải khát.
+                        </p>
                     </div>
-                </div>
-                <!-- Center -->
-                <div class="col-lg-4 mb-4 mb-lg-0 text-center">
-                    <div class="border border-warning rounded p-3">
-                        <img src="assets/img/3.jpg" alt="" class="img-fluid rounded mb-3">
-                        <h3>ÉP TÁO HỒNG</h3>
-                        <p style="color: gray;">Japan</p>
-                        <p style="color: gray;">Ép táo thơm ngon, bổ dưỡng cho da mặt, hỗ trợ miễn dịch.
-                            Giúp đẹp da và sáng da.</p>
-                        <div class="social-icons d-flex justify-content-center">
-                            <img src="hinhanh_labs/images/lin.png" alt="Facebook" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/tw.png" alt="Twitter" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/insta.png" alt="LinkedIn" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/fb.png" alt="Instagram" class="social-icon mx-2">
-                        </div>
-                    </div>
-                </div>
-                <!-- Bên phải -->
-                <div class="col-lg-4 text-center">
-                    <div class="border border-warning rounded p-3">
-                        <img src="assets/img/3.jpg" alt="" class="img-fluid rounded mb-3">
-                        <h3>RƯỢU NHO NỒNG</h3>
-                        <p style="color: gray;">China</p>
-                        <p style="color: gray;">Rượu làm vơi đi nỗi buồn và suy tư. Tạo cho bạn một cảm giác bình
-                            yên, giảm căn thẳng.</p>
-                        <div class="social-icons d-flex justify-content-center">
-                            <img src="hinhanh_labs/images/lin.png" alt="Facebook" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/tw.png" alt="Twitter" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/insta.png" alt="LinkedIn" class="social-icon mx-2">
-                            <img src="hinhanh_labs/images/fb.png" alt="Instagram" class="social-icon mx-2">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </footer>
-    <!-- Pager-->
-    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older
-            Posts →</a></div>
-    </div>
-    </div>
-    </div>
 
+                    <div class="d-flex justify-content-center"> <button class="btn btn-primary">Mua Hàng</button> </div>
+                </div>
+            </div> <!-- Card 2 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card card-custom position-relative"> <img src="assets/img/oi.jpg" class="card-img-top"
+                        alt="Mỳ Xào Cay">
+                    <div class="card-body card-body-custom text-center">
+                        <h5 class="card-title">Ổi Nữ Hoàng </h5>
+                        <p class="card-text">Trái ổi được biết đến là một trong những loại quả chứa nhiều
+                            dưỡng chất tốt cho cơ thể chúng ta. Bên cạnh việc ăn trực tiếp, chúng ta còn có
+                            thể sử dụng ổi để ép và tạo ra một món thức uống vô cùng thơm ngon và bổ
+                            dưỡng.</p>
+                    </div>
+                    <div class="d-flex justify-content-center"> <button class="btn btn-primary">Mua Hàng</button> </div>
+                </div>
+            </div> <!-- Card 3 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card card-custom position-relative"> <img src="assets/img/4.png" class="card-img-top"
+                        alt="Mỳ Xào Cay">
+                    <div class="card-body card-body-custom text-center">
+                        <h5 class="card-title">Mận Hà Nội </h5>
+                        <p class="card-text">Mận Hà Nội hay còn gọi là loại trái cây thơm, ngon được nhiều
+                            người ưa chuộng.Bạn có thể sử dụng máy ép hoa quả để làm nước ép mận giải
+                            nhiệt. Chọn những quả có vỏ ngoài trơn,không có vết côn trùng xâm
+                            nhập.</p>
+                    </div>
+                    <div class="d-flex justify-content-center"> <button class="btn btn-primary">Mua Hàng</button> </div>
+                </div>
+            </div> <!-- Card 4-->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card card-custom position-relative"> <img src="assets/img/2.jpg" class="card-img-top"
+                        alt="Mỳ Xào Cay">
+                    <div class="card-body card-body-custom text-center">
+                        <h5 class="card-title">Chuối Singapor </h5>
+                        <p class="card-text">Chuối là một nguồn chất xơ lành mạnh, giàu kali, vitamin B6, vitamin C,
+                            chất chống oxy hóa và các phytonutrients. Chuối có nhiều loại và kích cỡ khác nhau</p>
+                    </div>
+                    <div class="d-flex justify-content-center"> <button class="btn btn-primary">Mua Hàng</button> </div>
+                </div>
+            </div> <!-- Card 5 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card card-custom position-relative"> <img src="assets/img/quyt.jpg" class="card-img-top"
+                        alt="Mỳ Xào Cay">
+                    <div class="card-body card-body-custom text-center">
+                        <h5 class="card-title">Quýt Ngọt Lào </h5>
+                        <p class="card-text"> Quýt là một nhóm trái cây có múi màu cam bao gồm các
+                            giống lai của quýt với một số nhánh bưởi.Quả thường được ăn trực tiếp hoặc trộn món xà lách
+                            trái cây</p>
+                    </div>
+                    <div class="d-flex justify-content-center"> <button class="btn btn-primary">Mua Hàng</button> </div>
+                </div>
+            </div> <!-- Card 6 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card card-custom position-relative"> <img src="assets/img/3.jpg" class="card-img-top"
+                        alt="Mỳ Xào Cay">
+                    <div class="card-body card-body-custom text-center">
+                        <h5 class="card-title">Dưa Hấu </h5>
+                        <p class="card-text">Dưa hấu là một loại trái
+                            cây yêu thích của nhiều người vào mỗi dịp hè. Loại quả này có vị ngọt
+                            thanh mát mà còn mang lại nhiều lợi ích nhất định cho sức khỏe </p>
+                    </div>
+                    <div class="d-flex justify-content-center"> <button class="btn btn-primary">Mua Hàng</button> </div>
+                </div>
+            </div>
+        </div> <!-- Divider-->
+        <hr class="my-4" /> <!-- Post preview-->
+        <div class="post-preview"> <a href="post.html">
+                <div class="container fluid">
+                    <h3><b> CÁC LOẠI <span style="color: #a02800;">TRÁI CÂY KHÁC </span></b></h3>
+                    <p style="color: gray;">Nhà hàng chúng tôi luôn đón chào quý khách!</p>
+                </div>
+            </a> </div>
+        <!-- Divider-->
+        <hr class="my-4" />
+        <!-- Post preview-->
+        <div class="post-preview">
+            <!--carousel  -->
+            <div class="owl-carousel owl-theme animate__delay-1s animate__animated animate__fadeInUp">
+                <!-- Bấm hình lên liên kết với Lab khác -->
+                <div><img src="assets/img/dauu.jpg" alt=""></div>
+                <div> <img src="assets/img/thanhtra.png" alt=""></div>
+                <div><img src="assets/img/vai.jpg" alt=""></div>
+                <div> <img src="assets/img/thanhtra.png" alt=""> </div>
+                <div><img src="assets/img/dauu.jpg" alt=""></div>
+                <div> <img src="assets/img/thanhtra.png" alt=""> </div>
+                <div><img src="assets/img/vai.jpg" alt=""></div>
+                <div> <img src="assets/img/thanhtra.png" alt=""> </div>
+                <div><img src="assets/img/dauu.jpg" alt=""></div>
+                <div> <img src="assets/img/thanhtra.png" alt=""> </div>
+
+            </div>
+        </div>
+        <!--  -->
+        <hr class="my-4" />
+        <footer class="bg-black text-white py-5">
+            <div class="container-lg">
+                <h3><b>CÁC NHÀ <span style="color: #e2ff07;">CUNG CẤP </span></b></h3>
+                <div class="row">
+                    <!-- Bên trái -->
+                    <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                        <div class="border border-warning rounded p-3">
+                            <img src="assets/img/3.jpg" alt="" class="img-fluid rounded mb-3">
+                            <h3>QUỐC THÁI </h3>
+                            <p style="color: gray;">VietNam </p>
+                            <p style="color: gray;">Một trong những nhà cung cấp trái cây
+                                hàng đầu thế giới, chuyên cung cấp các loại trái cây hữu cơ và sạch cho thị trường toàn
+                                cầu. Với sứ mệnh nâng cao chất lượng cuộc sống thông qua các sản phẩm tự nhiên và lành
+                                mạnh.</p>
+                            <div class="social-icons d-flex justify-content-center">
+                                <img src="assets/img/facebook.png" alt="Facebook" class="social-icon mx-2">
+                                <img src="assets/img/twitter.png" alt="Twitter" class="social-icon mx-2">
+                                <img src="assets/img/linkedin.png" alt="LinkedIn" class="social-icon mx-2">
+                                <img src="assets/img/instagram.png" alt="Instagram" class="social-icon mx-2">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Center -->
+                    <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                        <div class="border border-warning rounded p-3">
+                            <img src="assets/img/3.jpg" alt="" class="img-fluid rounded mb-3">
+                            <h3>THẢO NHI </h3>
+                            <p style="color: gray;">VietNam </p>
+                            <p style="color: gray;">Một nhà hỗ trợ tiên phong trong lĩnh vực tài chính
+                                xanh, hỗ trợ các doanh nghiệp phát triển bền vững. Với các khoản vay ưu đãi và các
+                                chương trình hỗ trợ tài chính,đã giúp mở rộng quy mô kinh doanh
+                                và nâng cao chất lượng.</p>
+                            <div class="social-icons d-flex justify-content-center">
+                                <img src="assets/img/facebook.png" alt="Facebook" class="social-icon mx-2">
+                                <img src="assets/img/twitter.png" alt="Twitter" class="social-icon mx-2">
+                                <img src="assets/img/linkedin.png" alt="LinkedIn" class="social-icon mx-2">
+                                <img src="assets/img/instagram.png" alt="Instagram" class="social-icon mx-2">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bên phải -->
+                    <div class="col-lg-4 text-center">
+                        <div class="border border-warning rounded p-3">
+                            <img src="assets/img/3.jpg" alt="" class="img-fluid rounded mb-3">
+                            <h3>ĐỨC LONG </h3>
+                            <p style="color: gray;">VietNam </p>
+                            <p style="color: gray;">Một nhà phi lợi nhuận quốc tế, hoạt động nhằm
+                                thúc đẩy nông nghiệp bền vững và bảo vệ môi trường. Thông qua các dự án hỗ trợ kỹ thuật
+                                và đào tạo,các phương pháp canh tác tiên tiến đảm bảo sản phẩm trái cây luôn tươi ngon.
+                            </p>
+                            <div class="social-icons d-flex justify-content-center">
+                                <img src="assets/img/facebook.png" alt="Facebook" class="social-icon mx-2">
+                                <img src="assets/img/twitter.png" alt="Twitter" class="social-icon mx-2">
+                                <img src="assets/img/linkedin.png" alt="LinkedIn" class="social-icon mx-2">
+                                <img src="assets/img/instagram.png" alt="Instagram" class="social-icon mx-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </footer>
+   
 
     <!-- footer cuối -->
     <footer>
         <div class=""
-            style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(hinhanh_labs/imagelab6/footer-bg.jpg); background-size: 100% 100%;">
+            style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(assets/img/footer.png); background-size: 100% 100%;">
             <div>
                 <div class="text-white row row-cols-lg-4" style="padding: 24px 200px;">
                     <div class="col">
-                        <h3 class="border-bottom mb-3">About US</h3>
-                        <p> Integer cursus scelerisque ipsum id</p>
-                        Efficitur. Donec a dui fringilla,
-                        Gravida lorem ac, semper magna.
-                        Aenean rhoncus ac lectus a
-                        Interdum. Vivamus semper posuere dui.
+                        <h3 class="border-bottom mb-3">THÔNG TIN </h3>
+                        <p> Cửa hàng trái cây hàng đầu thế giới với chất lượng, uy tín cao. Đảm bảo an toàn cho người
+                            tiêu dùng
+                            và giá cả phù hợp. Nhằm cung cấp sản phẩm tốt cho sức khỏe của mỗi người.</p>
 
                     </div>
 
                     <div class="col">
-                        <h3 class="border-bottom mb-3">Subscribe</h3>
+                        <h3 class="border-bottom mb-3">ĐĂNG KÍ </h3>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control bg-transparent text-white" id="floatingInput"
                                 placeholder="name@example.com">
@@ -274,25 +354,25 @@
                     </div>
 
                     <div class="col">
-                        <h3 class="border-bottom mb-2">Contact</h3>
-                        <p>Hồ Chí Minh city</p>
+                        <h3 class="border-bottom mb-2">LIÊN HỆ </h3>
+                        <p>Cửa hàng: Trái Cây Tươi </p>
                         <p>+123456789000000</p>
-                        <p>in@acmin.com</p>
+                        <p>traicaytuoimat@admin.com</p>
                     </div>
 
                     <div class="col">
-                        <h3 class="border-bottom mb-3">Opening Hours</h3>
-                        <p>Monday: Closed</p>
-                        <p>Tue-Wed : 9:Am - 10:PM</p>
-                        <p>Thu-Fri : 9:Am - 10:PM</p>
-                        <p> Sat-Sun : 5:PM - 10:PM</p>
-
+                        <h3 class="border-bottom mb-3">GIỜ MỞ CỬA </h3>
+                        <p>Thứ Hai: 8h - 22h </p>
+                        <p>Thứ Ba - Tư : 8h - 22h</p>
+                        <p>Thứ Năm - Sáu : 8h - 22h</p>
+                        <p>Thứ Bảy: đóng cửa</p>
+                        <p>Chủ Nhật: đóng cửa </p>
 
                     </div>
                 </div>
                 <div class="border-top border-white p-3 bg-black">
-                    <p class="text-white text-center my-3">All right reserved: &copy 2018 Live Dinner Restaurant
-                        design by: html design </p>
+                    <p class="text-white text-center my-3">All right reserved: &copy 2025 cửa hàng trái cây tươi mát
+                    </p>
                 </div>
             </div>
         </div>
