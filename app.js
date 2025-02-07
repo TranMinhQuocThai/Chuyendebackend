@@ -149,6 +149,33 @@ app.get('/', async (req, res) => {
   }
 });
 
+router.get("/about", function (req, res, next) {
+  res.render("about.ejs");
+});
+
+// localhost:3000/contact
+router.get("/contact", function (req, res, next) {
+  res.render("contact.ejs");
+});
+
+// localhost:3000/post
+router.get("/post", function (req, res, next) {
+  res.render("post.ejs");
+});
+router.get("/post2", function (req, res, next) {
+  res.render("post2.ejs");
+});
+router.get("/post3", function (req, res, next) {
+  res.render("post3.ejs");
+});
+
+router.get("/dangnhap", function (req, res, next) {
+  res.render("dangnhap.ejs")
+})
+router.get("/dangki", function (req, res, next) {
+  res.render("dangki.ejs")
+})
+
 // Trang danh sách trái cây
 app.get('/fruits', async (req, res) => {
   try {
