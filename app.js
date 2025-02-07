@@ -150,30 +150,30 @@ app.get('/', async (req, res) => {
 });
 
 app.get("/about", function (req, res, next) {
-  res.render("about.ejs");
+  res.render("about");
 });
 
 // localhost:3000/contact
 app.get("/contact", function (req, res, next) {
-  res.render("contact.ejs");
+  res.render("contact");
 });
 
 // localhost:3000/post
 app.get("/post", function (req, res, next) {
-  res.render("post.ejs");
+  res.render("post");
 });
 app.get("/post2", function (req, res, next) {
-  res.render("post2.ejs");
+  res.render("post2");
 });
 app.get("/post3", function (req, res, next) {
-  res.render("post3.ejs");
+  res.render("post3");
 });
 
 app.get("/dangnhap", function (req, res, next) {
-  res.render("dangnhap.ejs")
+  res.render("dangnhap")
 })
 app.get("/dangki", function (req, res, next) {
-  res.render("dangki.ejs")
+  res.render("dangki")
 })
 
 // Trang danh sách trái cây
@@ -186,9 +186,7 @@ app.get('/fruits', async (req, res) => {
   }
 });
 
-app.get('/dangnhap', (req, res) => {
-  res.render('dangnhap'); // Render file views/login.ejs
-});
+
 
 
 
@@ -255,9 +253,7 @@ app.post('/register', async (req, res) => {
         res.status(500).json({ error: 'Đăng ký thất bại, không thể gửi email.' });
     }
 });
- app.get('/dangki', async (req, res) => {
-  res.render('dangki'); // Render file views/register.ejs
- })
+
 
 // Server
 const PORT =  process.env.Port || 1000;;
