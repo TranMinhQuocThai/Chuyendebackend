@@ -9,6 +9,15 @@ const postRoute = require('./routes/post');
 
 const app = express();
 
+const session = require('express-session');
+
+app.use(session({
+  secret: process.env.JWT_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Cập nhật cấu hình session
+}));
+
 // Cấu hình EJS
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -95,6 +104,16 @@ app.post('/register', async (req, res) => {
         console.error('Lỗi khi gửi email:', error);
         res.status(500).json({ error: 'Đăng ký thất bại, không thể gửi email.' });
     }
+});
+
+// API xử lý đăng xuất
+app.post('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Đăng xuất thất bại!' });
+    }
+    res.status(200).json({ message: 'Đăng xuất thành công!' });
+  });
 });
 
 // Server

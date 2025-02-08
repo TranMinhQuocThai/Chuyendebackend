@@ -63,17 +63,30 @@
                             class="bi bi-basket-fill"></i> Sản Phẩm</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact"><i
                             class="bi bi-telephone-fill"></i> Liên hệ</a></li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
-                            class="bi bi-person-fill"></i> Tài khoản </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/dangki">Đăng ký</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="/dangnhap">Đăng nhập </a></li>
-                    </ul>
-                </li>
+                            <% if (!user || !user.name) { %>
+                                <li class="nav-item dropdown"> 
+                                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                        <i class="bi bi-person-fill"></i> Tài khoản 
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="/dangki">Đăng ký</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="/dangnhap">Đăng nhập </a></li>
+                                    </ul>
+                                </li>
+                                <% } else { %>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle"></i> <%= user.name %>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <li><a class="dropdown-item" href="/profile">Hồ sơ</a></li>
+                                        <li><a class="dropdown-item" href="/dangnhap">Đăng xuất</a></li>
+                                    </ul>
+                                </li>
+                                <% } %>
             </ul>
         </div>
     </div>

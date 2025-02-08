@@ -43,42 +43,55 @@
 </head>
 
 <body>
-   <!-- Navigation-->
-   <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container px-4 px-lg-5"> <a class="navbar-brand" href="/"><img src="assets/img/6.png" alt="logo">
-            Fruits</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation"> Menu <i class="fas fa-bars"></i> </button>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5"> <a class="navbar-brand" href="/"><img src="assets/img/6.png" alt="logo">
+                Fruits</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"> Menu <i class="fas fa-bars"></i> </button>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item form-inline"> <input class="form-control form-control-sm" type="search"
-                        placeholder="Search" aria-label="Search"> <button class="btn btn-outline-success btn-sm"
-                        type="submit">Search</button> </li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/"><i
-                            class="bi bi-house-fill"></i> Trang Chủ</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about"><i
-                            class="bi bi-list"></i> Giới Thiệu</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/post"><i
-                            class="bi bi-basket-fill"></i> Sản Phẩm</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact"><i
-                            class="bi bi-telephone-fill"></i> Liên hệ</a></li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
-                            class="bi bi-person-fill"></i> Tài khoản </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/dangki">Đăng ký</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="/dangnhap">Đăng nhập </a></li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item form-inline"> <input class="form-control form-control-sm" type="search"
+                            placeholder="Search" aria-label="Search"> <button class="btn btn-outline-success btn-sm"
+                            type="submit">Search</button> </li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/"><i
+                                class="bi bi-house-fill"></i> Trang Chủ</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about"><i
+                                class="bi bi-list"></i> Giới Thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/post"><i
+                                class="bi bi-basket-fill"></i> Sản Phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact"><i
+                                class="bi bi-telephone-fill"></i> Liên hệ</a></li>
+                                <% if (!user || !user.name) { %>
+                                    <li class="nav-item dropdown"> 
+                                        <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                            <i class="bi bi-person-fill"></i> Tài khoản 
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="/dangki">Đăng ký</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="/dangnhap">Đăng nhập </a></li>
+                                        </ul>
+                                    </li>
+                                    <% } else { %>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-person-circle"></i> <%= user.name %>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                            <li><a class="dropdown-item" href="/profile">Hồ sơ</a></li>
+                                            <li><a class="dropdown-item" href="/dangnhap">Đăng xuất</a></li>
+                                        </ul>
+                                    </li>
+                                    <% } %>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-   
+    </nav>
+
     <!-- Page Header-->
     <header class="masthead" style="background-image: url('/assets/img/1.png')">
         <div class="container position-relative px-4 px-lg-5">
@@ -92,48 +105,52 @@
             </div>
         </div>
     </header>
-    
-  <!-- Phần liên hệ -->
-<div class="container">
-    <div class="text-center mb-4">
-        <h3><b>Liên Hệ Với Chúng Tôi</b></h3>
-    </div>
-    <div class="row">
-        <!-- Bên Trái -->
-        <div class="col-lg-5 col-md-12 mb-4">
-            <p><strong>Công ty TNHH Trái Cây Ngon – Chi nhánh Thành Phố Hồ Chí Minh </strong></p>
-            <ul>
-                <li><span>Trụ sở chính:</span> 180 – 182 Lý Chính Thắng, Phường 9, Quận 1, TP Hồ Chí Minh</li>
-                <li><span>Chi nhánh:</span> Tầng 4, số 01 ngõ 120 Trường Chinh, Thanh Xuân, Thành Phố Hồ Chí Minh</li>
-                <li><span>Hotline:</span> 0986.989.626</li>
-                <li><span>Email:</span> traicaytuoimat.com.vn@gmail.com</li>
-                <li><span>Website:</span> www.traicaytuoimat.com.vn</li>
-            </ul>
-           
-        </div>
-        <!-- Bên Phải -->
-        <div class="col-lg-7 col-md-12 mt-3 mt-lg-0">
-            <div class="row">
-                <div class="col-md-4 mb-2">
-                    <p><i class="bi bi-flag-fill"></i> Hồ Chí Minh, 24 - 25 </p>
-                </div>
-                <div class="col-md-4 mb-2">
-                    <p><i class="fa-solid fa-mobile-retro"></i> Mon - Fri, 8:00 - 22:00</p>
-                </div>
-                <div class="col-md-4 mb-2">
-                    <p><i class="fa-solid fa-phone"></i> +123456789000000</p>
-                </div>
-            </div>
-            <!-- Map -->
-            <div class="col-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125432.2059902727!2d106.53146759726565!3d10.75324530000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ea144839ef1%3A0x798819bdcd0522b0!2zQ2FvIMSQ4bqzbmcgQ8O0bmcgTmdo4buHIFRow7RuZyBUaW4gVFAuSENN!5e0!3m2!1svi!2s!4v1729048428810!5m2!1svi!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </div>
-</div>
 
-     <!-- footer cuối -->
-     <footer>
+    <!-- Phần liên hệ -->
+    <div class="container">
+        <div class="text-center mb-4">
+            <h3><b>Liên Hệ Với Chúng Tôi</b></h3>
+        </div>
+        <div class="row">
+            <!-- Bên Trái -->
+            <div class="col-lg-5 col-md-12 mb-4">
+                <p><strong>Công ty TNHH Trái Cây Ngon – Chi nhánh Thành Phố Hồ Chí Minh </strong></p>
+                <ul>
+                    <li><span>Trụ sở chính:</span> 180 – 182 Lý Chính Thắng, Phường 9, Quận 1, TP Hồ Chí Minh</li>
+                    <li><span>Chi nhánh:</span> Tầng 4, số 01 ngõ 120 Trường Chinh, Thanh Xuân, Thành Phố Hồ Chí Minh
+                    </li>
+                    <li><span>Hotline:</span> 0986.989.626</li>
+                    <li><span>Email:</span> traicaytuoimat.com.vn@gmail.com</li>
+                    <li><span>Website:</span> www.traicaytuoimat.com.vn</li>
+                </ul>
+
+            </div>
+            <!-- Bên Phải -->
+            <div class="col-lg-7 col-md-12 mt-3 mt-lg-0">
+                <div class="row">
+                    <div class="col-md-4 mb-2">
+                        <p><i class="bi bi-flag-fill"></i> Hồ Chí Minh, 24 - 25 </p>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <p><i class="fa-solid fa-mobile-retro"></i> Mon - Fri, 8:00 - 22:00</p>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <p><i class="fa-solid fa-phone"></i> +123456789000000</p>
+                    </div>
+                </div>
+                <!-- Map -->
+                <div class="col-12">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125432.2059902727!2d106.53146759726565!3d10.75324530000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ea144839ef1%3A0x798819bdcd0522b0!2zQ2FvIMSQ4bqzbmcgQ8O0bmcgTmdo4buHIFRow7RuZyBUaW4gVFAuSENN!5e0!3m2!1svi!2s!4v1729048428810!5m2!1svi!2s"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer cuối -->
+    <footer>
         <div class=""
             style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(assets/img/footer.png); background-size: 100% 100%;">
             <div>

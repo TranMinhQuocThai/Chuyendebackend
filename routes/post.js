@@ -10,32 +10,43 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const fruits = await Fruit.find();
-    res.render('index', { fruits });
+    const user = req.session.user;
+    res.render('index', { user });
   } catch (err) {
     res.status(500).send('Lỗi khi tải trang chủ');
       }
 });
 
 router.get("/about", function (req, res, next) {
-  res.render("about");
+  const user = req.session.user;
+
+  res.render("about", { user });
 });
 
 // localhost:3000/contact
 router.get("/contact", function (req, res, next) {
-  res.render("contact");
+  const user = req.session.user;
+
+  res.render("contact", { user });
 });
 
 // localhost:3000/post
 router.get("/post", function (req, res, next) {
-  res.render("post");
+  const user = req.session.user;
+
+  res.render("post", { user });
 });
 
 router.get("/post2", function (req, res, next) {
-  res.render("post2");
+  const user = req.session.user;
+
+  res.render("post2", { user });
 });
 
 router.get("/post3", function (req, res, next) {
-  res.render("post3");
+  const user = req.session.user;
+
+  res.render("post3",{ user });
 });
 
 router.get("/dangnhap", function (req, res, next) {
@@ -44,6 +55,15 @@ router.get("/dangnhap", function (req, res, next) {
 
 router.get("/dangki", function (req, res, next) {
   res.render("dangki");
+});
+
+router.get("/logout", function (req, res) {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send('Lỗi khi đăng xuất');
+    }
+    res.redirect('/dangnhap');
+  });
 });
 
 // Trang danh sách trái cây
@@ -118,7 +138,7 @@ return res.status(404).json({ error: 'Người dùng không tồn tại!' });
       if (!isMatch) {
           return res.status(400).json({ error: 'Sai mật khẩu!' });
       }
-
+      req.session.user = user;
       res.status(200).json({ message: 'Đăng nhập thành công!' });
   } catch (error) {
       console.error('Lỗi đăng nhập:', error);
