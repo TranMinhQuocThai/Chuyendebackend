@@ -32,7 +32,7 @@ mongoose.connect(process.env.Mongodb_url, {
   serverSelectionTimeoutMS: 30000,
 })
   .then(() => console.log('Kết nối với MongoDB thành công'))
-  .catch((err) => console.error('Lỗi kết nối với MongoDB:', err));
+  .catch((err) => console.error('Lỗi kết nối với MongoD:', err));
 
 // Secret key từ .env
 const JWT_SECRET = process.env.JWT_SECRET || 'my-secret';
