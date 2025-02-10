@@ -63,11 +63,11 @@
                             class="bi bi-basket-fill"></i> Sản Phẩm</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact"><i
                             class="bi bi-telephone-fill"></i> Liên hệ</a></li>
-                <% if (!user || !user.name) { %>
+<% if (!user || !user.name) { %>
                 <li class="nav-item dropdown"> 
-                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+<a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
                         <i class="bi bi-person-fill"></i> Tài khoản 
-                    </a>
+</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/dangki">Đăng ký</a></li>
                         <li>
@@ -76,15 +76,14 @@
                         <li><a class="dropdown-item" href="/dangnhap">Đăng nhập </a></li>
                     </ul>
                 </li>
-                <% } else { %>
+<% } else { %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i> <%= user.name %>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="/profile">Hồ sơ</a></li>
                         <li><a class="dropdown-item" href="/dangnhap">Đăng xuất</a></li>
-                    </ul>
+                      </ul>
                 </li>
                 <% } %>
             </ul>
@@ -229,20 +228,38 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-10">
                     <h2 class="text-center mb-3">Bình Luận</h2>
-                    <div class="form-group">
-                        <label for="comment">Viết bình luận của bạn:</label>
-                        <textarea class="form-control" id="comment" rows="4"></textarea>
-                    </div>
-                    <button type="button" class="btn btn-primary mt-2">Gửi Bình Luận</button>
+        
+                    <% if (!user || !user.name) { %>
+                        <p class="text-center">Bạn cần <a href="/dangnhap">đăng nhập</a> để bình luận.</p>
+                        
+                    <% } else { %>
+                        <form action="/addcomment" method="POST">
+                            <div class="form-group">
+                                <label for="comment">Viết bình luận của bạn:</label>
+                                <textarea class="form-control" id="comment" name="content" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Gửi Bình Luận</button>
+                        </form>
+                    <% } %>
+        
+                    <h3 class="text-center mt-4">Danh sách bình luận</h3>
+                    <ul class="list-group">
+                        <% comments.forEach(comment => { %>
+                            <li class="list-group-item m-3">
+                                <strong><%= comment.name %></strong>: <%= comment.content %> 
+                                <br>
+                                <small class="text-muted"><%= comment.createdAt.toLocaleString() %></small>
+                            </li>
+                        <% }) %>
+                    </ul>
                 </div>
             </div>
         </div>
 
-
         <!-- footer-->
         <footer>
             <div class=""
-                style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(assets/img/footer.png); background-size: 100% 100%;">
+  /              style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(assets/img/footer.png); background-size: 100% 100%;">
                 <div>
                     <div class="text-white row row-cols-lg-4" style="padding: 24px 200px;">
                         <div class="col">

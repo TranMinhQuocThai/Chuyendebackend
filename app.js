@@ -25,6 +25,7 @@ app.set('views', './views');
 // Middleware
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 // Kết nối MongoDB
 mongoose.connect(process.env.Mongodb_url, {

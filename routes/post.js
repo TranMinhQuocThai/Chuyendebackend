@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Fruit = require('../models/Fruit'); // Assuming you have a Fruit model
 const User = require('../models/user'); // Assuming you have a User model
+const Comment = require('../models/coment'); // Assuming you have a User model
 
 const router = express.Router();
 
@@ -17,10 +18,11 @@ router.get('/', async (req, res) => {
       }
 });
 
-router.get("/about", function (req, res, next) {
+router.get("/about", async (req, res, next) => {
   const user = req.session.user;
+  const comments = await Comment.find().sort({ createdAt: -1 }).lean(); // Thêm .lean()
 
-  res.render("about", { user });
+  res.render("about", {user, comments});
 });
 
 // localhost:3000/contact
@@ -160,5 +162,32 @@ router.get('/api/protected', (req, res) => {
     res.status(401).json({ message: 'Token không hợp lệ' });
   }
 });
+
+//thêm comment
+router.post("/addcomment", async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send("Bạn cần đăng nhập để bình luận!");
+  }
+
+  const name = req.session.user.name;
+  const { content } = req.body;
+
+  console.log("Dữ liệu nhận được từ form:", { name, content });
+
+  if (!content) {
+    return res.status(400).send("Nội dung bình luận không được để trống!");
+  }
+
+  try {
+    const newComment = await Comment.create({ name, content });
+    console.log("Bình luận đã lưu:", newComment);
+    res.redirect("/about");
+  } catch (error) {
+    console.error("Lỗi khi lưu bình luận:", error);
+    res.status(500).send("Lỗi server khi lưu bình luận");
+  }
+});
+
+
 
 module.exports = router;

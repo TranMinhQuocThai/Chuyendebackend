@@ -204,11 +204,11 @@
                 const data = await response.json();
                 console.log(data);
                 if (response.ok) {
-                    responseMessage.innerHTML = `<div class="alert alert-success"> hello ${data.message}</div>`;
+                    responseMessage.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
                     localStorage.setItem('token', data.token);
                     ktra=true; // Save token
                 } else {
-                    responseMessage.innerHTML = `<div class="alert alert-danger">no ok ${data.message}</div>`;
+                    responseMessage.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
                 }
             } catch (error) {
                 responseMessage.innerHTML = `<div class="alert alert-danger">Lỗi kết nối đến server!</div>`;
