@@ -111,160 +111,23 @@
         <div class="col-lg-9 col-md-8">
             <div class="row">
                 <!--sản phẩm 1-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow-sm">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/oi.jpg" width="90%" alt="">
-                        </div>
-                        <div class=" card-footer ">
-                            <h5 class="text-danger">20.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 2-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow-sm">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/oi.jpg" width="90%" alt="">
-                        </div>
-                        <div class=" card-footer ">
-                            <h5 class="text-danger">30.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
+                <% fruits.forEach(fruit => { %>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card text-center mt-3 shadow-sm">
+                            <div class="card-header"><%= fruit.name %></div>
+                            <div class="card-body">
+                                <img src="assets/img/<%= fruit.image %>.jpg" width="90%">
+                            </div>
+                            <div class="card-footer">
+                                <h5 class="text-danger"><%= fruit.price %>.000VND</h5>
+                                <button class="btn btn-secondary add-to-cart" 
+                                    data-fruit-id="<%= fruit._id %>"> 
+                                    Thêm vào giỏ hàng
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--sản phẩm 3-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/oi.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">39.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 4-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/kiwi.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">20.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 5-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/kiwi.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">30.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 6-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/kiwi.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">30.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 7 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/dao.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">32.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 8  -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/dao.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">90.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 6-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/dao.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">32.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 7 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/mit.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">39.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 8  -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/mit.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">32.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
-                </div>
-                <!--sản phẩm 9  -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card text-center mt-3 shadow">
-                        <div class="card-header ">Trái Cây Tươi</div>
-                        <div class="card-body">
-                            <img src="assets/img/mit.jpg" width="90%" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="text-danger">19.000</h5>
-                            <a href="" class="btn btn-secondary">Mua</a>
-                        </div>
-                    </div>
+                <% }) %>            
                 </div>
                 <!-- pagination -->
                 <nav aria-label="Page navigation example">
@@ -410,3 +273,37 @@
 </body>
 
 </html>
+<script>
+    // Nhúng biến userId vào JavaScript
+    const userId = <%- JSON.stringify(user._id) %>;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const buttons = document.querySelectorAll(".add-to-cart");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function() {
+                const fruitId = this.getAttribute("data-fruit-id");
+
+                if (!userId) {
+                    alert("Bạn cần đăng nhập để thêm vào giỏ hàng!");
+                    return;
+                }
+
+                fetch("/cart/addcart", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ userId, fruitId, quantity: 1 })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                    } else {
+                        alert("Có lỗi xảy ra!");
+                    }
+                })
+                .catch(error => console.error("Lỗi:", error));
+            });
+        });
+    });
+</script>

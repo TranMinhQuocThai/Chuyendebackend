@@ -18,6 +18,8 @@ router.get('/', async (req, res) => {
       }
 });
 
+
+
 router.get("/about", async (req, res, next) => {
   const user = req.session.user;
   const comments = await Comment.find().sort({ createdAt: -1 }).lean(); // Thêm .lean()
@@ -33,10 +35,11 @@ router.get("/contact", function (req, res, next) {
 });
 
 // localhost:3000/post
-router.get("/post", function (req, res, next) {
-  const user = req.session.user;
+router.get("/post", async (req, res) => {
+  const user = req.session.user ? req.session.user : null;
+  const fruits = await Fruit.find();
 
-  res.render("post", { user });
+  res.render("post", { user,fruits });
 });
 
 router.get("/post2", function (req, res, next) {
@@ -69,7 +72,7 @@ router.get("/logout", function (req, res) {
 });
 
 // Trang danh sách trái cây
-router.get('/api/user', async (req, res) => {
+router.post('/api/user', async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);

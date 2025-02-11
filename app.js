@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const postRoute = require('./routes/post');
+const cartRoutes = require('./routes/Cart');
+
 
 const app = express();
 
@@ -116,6 +118,9 @@ app.post('/logout', (req, res) => {
     res.status(200).json({ message: 'Đăng xuất thành công!' });
   });
 });
+
+app.use("/cart", cartRoutes);
+
 
 // Server
 const PORT =  process.env.Port || 1000;;
