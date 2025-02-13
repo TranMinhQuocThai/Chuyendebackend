@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        body {
+            background-image: url('assets/img/image.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="p-6 min-h-screen flex flex-col items-center">
+    <div class="w-full max-w-lg bg-white p-4 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold">Sản Phẩm Bạn Đã Chọn </h2>
+        <div class="border-b py-4 flex items-center justify-between">
+            <img src="" alt="sản phẩm 1" class="w-16 h-16 rounded">
+            <div class="flex-1 ml-4">
+                <h3 class="font-semibold">Tên sản phẩm:</h3>
+                <p class="text-sm">Giá:</p>
+            </div>
+            <div class="flex items-center">
+                <button class="border px-2">-</button>
+                <span class="mx-2">1</span>
+                <button class="border px-2">+</button>
+            </div>
+            
+        </div>
+        <div class="border-b py-4 flex items-center justify-between">
+            <img src="" alt="sản phẩm 2 " class="w-16 h-16 rounded">
+            <div class="flex-1 ml-4">
+                <h3 class="font-semibold">Tên sản phẩm:</h3>
+                <p class="text-sm">Giá:</p>
+            </div>
+            <div class="flex items-center">
+                <button class="border px-2">-</button>
+                <span class="mx-2">1</span>
+                <button class="border px-2">+</button>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="w-full max-w-lg bg-white p-4 mt-4 rounded-lg shadow-lg">
+        <h2 class="text-lg font-bold">Tóm Tắt </h2>
+        <p>Giá cả:</p>
+        <p>Vận chuyển: <strong>Miễn phí</strong></p>
+        <p class="font-bold">Tổng tiền (bao gồm thuế VAT): </p>
+        <button class="w-full mt-4 bg-blue-500 text-white py-2 rounded">Thanh Toán</button>
+    </div>
+
+    <div class="w-full max-w-lg bg-white p-4 mt-4 rounded-lg shadow-lg">
+        <h3 class="font-semibold">Dự kiến giao hàng</h3>
+        <p>12.10.2025 - 14.10.2025</p>
+    </div>
+
+    <div class="w-full max-w-lg bg-white p-4 mt-4 rounded-lg shadow-lg">
+        <h3 class="font-semibold">Thanh Toán Qua </h3>
+        <div class="flex gap-4 mt-2">
+            <img src="https://via.placeholder.com/50" alt="Visa">
+            <img src="https://via.placeholder.com/50" alt="Mastercard">
+            <img src="https://via.placeholder.com/50" alt="PayPal">
+        </div>
+    </div>
+</body>
+</html>

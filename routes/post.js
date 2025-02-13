@@ -54,6 +54,12 @@ router.get("/post3", function (req, res, next) {
   res.render("post3",{ user });
 });
 
+router.get("/giohang", function (req, res, next) {
+  const user = req.session.user;
+
+  res.render("giohang",{ user });
+});
+
 router.get("/dangnhap", function (req, res, next) {
   res.render("dangnhap");
 });
