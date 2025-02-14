@@ -17,45 +17,54 @@
 <body class="p-6 min-h-screen flex flex-col items-center">
     <div class="w-full max-w-lg bg-white p-4 rounded-lg shadow-lg">
         <h2 class="text-xl font-bold">Sản Phẩm Bạn Đã Chọn </h2>
-        <div class="border-b py-4 flex items-center justify-between">
-            <img src="" alt="sản phẩm 1" class="w-16 h-16 rounded">
-            <div class="flex-1 ml-4">
-                <h3 class="font-semibold">Tên sản phẩm:</h3>
-                <p class="text-sm">Giá:</p>
-            </div>
-            <div class="flex items-center">
-                <button class="border px-2">-</button>
-                <span class="mx-2">1</span>
-                <button class="border px-2">+</button>
-            </div>
-            
-        </div>
-        <div class="border-b py-4 flex items-center justify-between">
-            <img src="" alt="sản phẩm 2 " class="w-16 h-16 rounded">
-            <div class="flex-1 ml-4">
-                <h3 class="font-semibold">Tên sản phẩm:</h3>
-                <p class="text-sm">Giá:</p>
-            </div>
-            <div class="flex items-center">
-                <button class="border px-2">-</button>
-                <span class="mx-2">1</span>
-                <button class="border px-2">+</button>
-            </div>
-            
-        </div>
+        <% if (cart.length === 0) { %>
+            <p class="text-center text-muted">Giỏ hàng trống.</p>
+        <% } else { %>
+            <% cart.forEach(item => { %>
+                <div class="border-b py-4 flex items-center justify-between">
+                    <img src="/assets/img/<%= item.image %>.jpg" class="w-16 h-16 rounded">
+                    <div class="flex-1 ml-4">
+                        <h3 class="font-semibold"><%= item.name %></h3>
+                        <p class="text-sm">Giá:<%= item.price %>.000 VND</p>
+                    </div>
+                    <div class="flex items-center">
+                        Số lượng
+                        <span class="mx-2"><%= item.quantity %></span>
+                    </div>
+                </div>
+                <%})%>
+                
+            <%}%>
+        
     </div>
-    
+    <% let totalPrice = cart.reduce((sum, item) => sum + (item.fruitId.price * item.quantity), 0); %>
     <div class="w-full max-w-lg bg-white p-4 mt-4 rounded-lg shadow-lg">
-        <h2 class="text-lg font-bold">Tóm Tắt </h2>
-        <p>Giá cả:</p>
+        <h2 class="text-lg font-bold">Chi phí</h2>
         <p>Vận chuyển: <strong>Miễn phí</strong></p>
-        <p class="font-bold">Tổng tiền (bao gồm thuế VAT): </p>
-        <button class="w-full mt-4 bg-blue-500 text-white py-2 rounded">Thanh Toán</button>
+        <p class="font-bold">Tổng tiền: <%= totalPrice %>.000 VND</p>
+        <button id="checkout-btn" class="w-full mt-4 bg-blue-500 text-white py-2 rounded">Thanh Toán</button>
+        <script>
+            document.getElementById("checkout-btn").addEventListener("click", async function() {
+                try {
+                    let response = await fetch("/cart/checkout", { method: "POST" });
+                    let data = await response.json();
+            
+                    if (response.ok) {
+                        alert(data.message + " Tổng tiền: " + data.total + " VND");
+                        window.location.reload(); 
+                    } else {
+                        alert("Lỗi: " + data.message);
+                    }
+                } catch (error) {
+                    console.error("Lỗi thanh toán:", error);
+                    alert("Có lỗi xảy ra khi thanh toán!");
+                }
+            });
+            </script>
     </div>
 
     <div class="w-full max-w-lg bg-white p-4 mt-4 rounded-lg shadow-lg">
         <h3 class="font-semibold">Dự kiến giao hàng</h3>
-        <p>12.10.2025 - 14.10.2025</p>
     </div>
 
     <div class="w-full max-w-lg bg-white p-4 mt-4 rounded-lg shadow-lg">

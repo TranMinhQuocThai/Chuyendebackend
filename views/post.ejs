@@ -117,8 +117,8 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="card text-center mt-3 shadow-sm">
                             <div class="card-header"><%= fruit.name %></div>
-                            <div class="card-body">
-                                <img src="assets/img/<%= fruit.image %>.jpg" width="90%">
+                            <div class="card-image">
+                                <img src="assets/img/<%= fruit.image %>.jpg" style="width:350px; height:350px "  width="90%">
                             </div>
                             <div class="card-footer">
                                 <h5 class="text-danger"><%= fruit.price %>.000VND</h5>
@@ -164,7 +164,7 @@
                         56.85$
                     </div>
 
-                    <a href="" class="btn btn-primary mx-auto d-block w-50">GIỎ HÀNG </a>
+                    <a href="/cart/giohang" class="btn btn-primary mx-auto d-block w-50">GIỎ HÀNG </a>
                 </div>
             </div>
 
@@ -277,7 +277,6 @@
 </html>
 <script>
     // Nhúng biến userId vào JavaScript
-    const userId = <%- JSON.stringify(user._id) %>;
 
     document.addEventListener("DOMContentLoaded", function() {
         const buttons = document.querySelectorAll(".add-to-cart");
@@ -285,6 +284,7 @@
         buttons.forEach(button => {
             button.addEventListener("click", function() {
                 const fruitId = this.getAttribute("data-fruit-id");
+const userId = <%- JSON.stringify(user._id) %>;
 
                 if (!userId) {
                     alert("Bạn cần đăng nhập để thêm vào giỏ hàng!");
