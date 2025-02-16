@@ -7,9 +7,17 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const postRoute = require('./routes/post');
 const cartRoutes = require('./routes/Cart');
-
-
+const Cart = require("./models/cart");
 const app = express();
+const { urlencoded } = require('body-parser');
+const axios = require('axios');
+const crypto = require('crypto');
+
+const config = require('./config');
+
+app.use(express.json());
+app.use(urlencoded({ extended: true }));
+app.use(express.static('./public'));
 
 const session = require('express-session');
 
@@ -121,7 +129,108 @@ app.post('/logout', (req, res) => {
 
 app.use("/cart", cartRoutes);
 
+app.post('/checkout', async (req, res) => {
+  const userId = req.session.user._id;
+  const cart = await Cart.findOne({ userId }).populate("items.fruitId");
+  let totalPrice = cart.items.reduce((sum, item) => sum + (item.fruitId.price * item.quantity), 0) * 1000;
+  console.log(totalPrice);
+  
+  // if (!req.session.user) {
+  //   return res.redirect("/dangnhap");
+  // }
+  // if (!cart || cart.items.length === 0) {
+  //   return res.status(400).json({ message: "Giỏ hàng trống, không thể thanh toán" });
+  // }
+  
+  let {
+    accessKey,
+    secretKey,
+    orderInfo,
+    partnerCode,
+    redirectUrl,
+    ipnUrl,
+    requestType,
+    extraData,
+    orderGroupId,
+    autoCapture,
+    lang,
+  } = config;
 
+  var amount = totalPrice;
+  var orderId = partnerCode + new Date().getTime();
+  var requestId = orderId;
+
+  //before sign HMAC SHA256 with format
+  //accessKey=$accessKey&amount=$amount&extraData=$extraData&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$requestId&requestType=$requestType
+  var rawSignature =
+    'accessKey=' +
+    accessKey +
+    '&amount=' +
+    amount +
+    '&extraData=' +
+    extraData +
+    '&ipnUrl=' +
+    ipnUrl +
+    '&orderId=' +
+    orderId +
+    '&orderInfo=' +
+    orderInfo +
+    '&partnerCode=' +
+    partnerCode +
+    '&redirectUrl=' +
+    redirectUrl +
+    '&requestId=' +
+    requestId +
+    '&requestType=' +
+    requestType;
+
+  //signature
+  var signature = crypto
+    .createHmac('sha256', secretKey)
+    .update(rawSignature)
+    .digest('hex');
+
+  //json object send to MoMo endpoint
+  const requestBody = JSON.stringify({
+    partnerCode: partnerCode,
+    partnerName: 'Test',
+    storeId: 'MomoTestStore',
+    requestId: requestId,
+    amount: amount,
+    orderId: orderId,
+    orderInfo: orderInfo,
+    redirectUrl: redirectUrl,
+    ipnUrl: ipnUrl,
+    lang: lang,
+    requestType: requestType,
+    autoCapture: autoCapture,
+    extraData: extraData,
+    orderGroupId: orderGroupId,
+    signature: signature,
+  });
+
+  // options for axios
+  const options = {
+    method: 'POST',
+    url: 'https://test-payment.momo.vn/v2/gateway/api/create',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(requestBody),
+    },
+    data: requestBody,
+  };
+  
+  // Send the request and handle the response
+  let result;
+  try {
+    result = await axios(options);
+    // return res.status(200).json(result.data);
+    await Cart.deleteOne({ userId });
+    return res.status(200).json({ payUrl: result.data.payUrl });
+  } catch (error) {
+    return res.status(500).json({ statusCode: 500, message: error.message });
+  }
+});
 // Server
 const PORT =  process.env.Port || 1000;;
 app.listen(PORT, () => {

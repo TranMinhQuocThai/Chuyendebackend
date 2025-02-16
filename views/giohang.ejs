@@ -42,25 +42,29 @@
         <h2 class="text-lg font-bold">Chi phí</h2>
         <p>Vận chuyển: <strong>Miễn phí</strong></p>
         <p class="font-bold">Tổng tiền: <%= totalPrice %>.000 VND</p>
+        <!-- <form action="/checkout" method="post">
+            <button id="checkout-btn" class="w-full mt-4 bg-blue-500 text-white py-2 rounded">Thanh Toán</button>
+            <input type="submit" value="xyz">
+        </form> -->
         <button id="checkout-btn" class="w-full mt-4 bg-blue-500 text-white py-2 rounded">Thanh Toán</button>
+
         <script>
             document.getElementById("checkout-btn").addEventListener("click", async function() {
                 try {
-                    let response = await fetch("/cart/checkout", { method: "POST" });
+                    let response = await fetch("/checkout", { method: "POST" });
                     let data = await response.json();
-            
-                    if (response.ok) {
-                        alert(data.message + " Tổng tiền: " + data.total + " VND");
-                        window.location.reload(); 
+        
+                    if (response.ok && data.payUrl) {
+                        window.location.href = data.payUrl; // Mở link thanh toán
                     } else {
-                        alert("Lỗi: " + data.message);
+                        alert("Lỗi: " + (data.message || "Không thể tạo thanh toán"));
                     }
                 } catch (error) {
                     console.error("Lỗi thanh toán:", error);
                     alert("Có lỗi xảy ra khi thanh toán!");
                 }
             });
-            </script>
+        </script>
     </div>
 
     <div class="w-full max-w-lg bg-white p-4 mt-4 rounded-lg shadow-lg">
